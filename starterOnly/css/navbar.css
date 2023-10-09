@@ -25,12 +25,14 @@
   
 .topnav a:hover {
     background-color: #ff0000;
+    text-decoration: underline;
     color: #ffffff;
     border-radius: 15px;
 }
   
 .topnav a.active {
     background-color: #ff0000;
+    text-decoration: underline;
     color: #ffffff;
     border-radius: 15px;
 }

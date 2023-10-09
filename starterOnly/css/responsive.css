@@ -1,7 +1,9 @@
 /**
  * Responsive : Media Queries
  */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 63.999rem) {
+    .topnav a {display: none;}
+
     .hero-section {
       display: block;
       box-shadow: unset;
@@ -62,7 +64,7 @@
     }
 }
    
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 425px) {
     .topnav a {display: none;}
     .topnav a.icon {
       float: right;
