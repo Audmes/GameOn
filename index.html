@@ -14,21 +14,21 @@
   <body>
     <!-- header -->
     <header>
-      <div class="topnav" id="myTopnav">
-        <div class="header-logo">
-          <img alt="logo GameOn" src="images/logo.png" width="auto" height="auto" />
+        <div class="topnav" id="myTopnav">
+            <div class="header-logo">
+                <img alt="logo GameOn" src="images/logo.png" />
+            </div>
+            <div class="main-navbar">
+                <!-- <a href="#" ><span>Accueil</span></a> -->
+                <a href="#" class="active"><span>Détails de l'évènement</span></a>
+                <a href="#"><span>À propos</span></a>
+                <a href="#"><span>Contact</span></a>
+                <a href="#"><span>Évènements passés</span></a>
+                <a href="javascript:void(0);" class="icon" onclick="editNav()">
+                  <i class="fa fa-bars"></i>
+                </a>
+            </div>
         </div>
-        <div class="main-navbar">
-          <!-- <a href="#" ><span>Accueil</span></a> -->
-          <a href="#" class="active"><span>Détails de l'évènement</span></a>
-          <a href="#"><span>À propos</span></a>
-          <a href="#"><span>Contact</span></a>
-          <a href="#"><span>Évènements passés</span></a>
-          <a href="javascript:void(0);" class="icon" onclick="editNav()">
-            <i class="fa fa-bars"></i>
-          </a>
-        </div>
-      </div>
     </header>
     <!-- </div> -->
 
@@ -47,14 +47,15 @@
           <button class="btn-signup modal-btn">je m'inscris</button>
         </div>
         <div class="hero-img"><img src="images/bg_img.jpg" alt="img" /></div>
-        <!-- <button class="btn-signup modal-btn">je m'inscris</button> -->
+        <button class="btn-signup modal-btn">je m'inscris</button>
       </div>
 
-      <div class="bground">
-        <div class="content">
+      <div class="modal-overlay">
+        <div class="modal-content">
           <span class="close"></span>
+
           <div class="modal-body">
-            <form id="form" name="reserve" action="index.html" novalidate autocomplete="off" method="post">
+            <form id="form" name="reserve" action="index.html" novalidate autocomplete="on" method="post">
                 <div class="formData" data-error="" data-error-visible="false">
                   <label for="first">Prénom</label><br>
                   <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
@@ -143,14 +144,22 @@
                 <!-- Submit Button -->
                 <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
             </form>
+
+            <div class="formValidMessage">
+              <p>Merci pour votre inscription</p>
+              <button class="btn-signup modal-btn">Fermer</button>
+            </div>
+
           </div>
         </div>
       </div>
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-      <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
+    <footer>
+      <div class="footer">
+          <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
+      </div>
     </footer>
 
     <!-- Script JS -->

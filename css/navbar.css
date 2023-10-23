@@ -2,13 +2,15 @@
  * Navbar
  */
 .topnav {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
     overflow: hidden;
-    margin: 3.5%;
-  
+    /* margin: 3.5%; */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    /* align-items: center; */
+    /* justify-content: space-between; */
+    align-items: center;
 }
 
 .topnav a {
@@ -39,4 +41,21 @@
   
 .topnav .icon {
     display: none;
-} 
+}
+
+/* Logo */
+/* .header-logo {
+    padding-left: 2vw;
+} */
+
+.header-logo img {
+    height:  50px;
+}
+
+/* Nav */
+.main-navbar {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+    /* background: green; */
+}

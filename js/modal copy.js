@@ -1,18 +1,17 @@
 // DOM Elements
-const modalbg = document.querySelector(".modal-overlay");
+const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 
 // DOM Elements : Vérification de formulaire
-const form = document.getElementById('form');
+// const form = document.getElementById('form');
+const form = document.querySelector('form');
 const first = document.getElementById('first');
 const last = document.getElementById('last');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const conditions = document.getElementById('checkbox1');
-
-const formValidMessage = document.querySelector('.formValidMessage');
 
 /**
  * Fonction pour ouvrir et fermer le menu mobile
@@ -68,7 +67,7 @@ function validateFirst(first) {
 }
 
 // Function validation : Lastname
-function validateName(last) {  
+function validateName(last) {
     let lastRegex = /^[A-Za-z][A-Za-z\é\è\ê\-]+$/;
     return lastRegex.test(last);
 }
@@ -93,17 +92,27 @@ function validateBirthdate(birthdate) {
 }
 
 
+
+
+
+form.addEventListener('submit', validationForm);
+
+
+
+
+
+
+
 // Formulaire : Validation
 form.addEventListener('submit',function(e) {
-  let isFormOk = true;
+
+  e.preventDefault();
 
   // Firstname
   if(first.value === '') {
-    showError(first,'Votre Prénom est requis.');
-    isFormOk = false;
+      showError(first,'Votre Prénom est requis.');
   }else if (!validateFirst(first.value)) {
     showError(first, "Votre Prénom n'est pas valide.");
-    isFormOk = false;
   }else {
     showSuccess(first);
   }
@@ -111,10 +120,8 @@ form.addEventListener('submit',function(e) {
   // Lastname
   if(last.value === '') {
     showError(last, 'Votre Nom est requis.');
-    isFormOk = false;
   } else if (!validateName(last.value)) {
     showError(last, "Votre Nom n'est pas valide.");
-    isFormOk = false;
   }else {
     showSuccess(last);
   }
@@ -122,10 +129,8 @@ form.addEventListener('submit',function(e) {
   // E-mail
   if(email.value === ''){
     showError(email, 'Votre E-mail est requis.');
-    isFormOk = false;
   }else if(!validateEmail(email.value)) {
     showError(email,"Votre E-mail n'est pas valide.");
-    isFormOk = false;
   }else {
     showSuccess(email);
   }
@@ -133,10 +138,8 @@ form.addEventListener('submit',function(e) {
   // Birthdate
   if(birthdate.value === '') {
     showError(birthdate, "Vous devez entrer votre date de naissance.");
-    isFormOk = false;
   }else if(!validateBirthdate(birthdate.value)) {
     showError(birthdate, "Vous n'avez pas l'âge pour participer.");
-    isFormOk = false;
   }else {
     showSuccess(birthdate);
   }
@@ -144,10 +147,8 @@ form.addEventListener('submit',function(e) {
   // Function validation : Quantity
   if (quantity.value === '') {
     showError(quantity, "Un nombre est requis.");
-    isFormOk = false;
   } else if (quantity.value > 99) {
     showError(quantity, "Le nombre ne peut pas être supérieur à 99.");
-    isFormOk = false;
   } else {
     showSuccess(quantity);
   }
@@ -157,24 +158,14 @@ form.addEventListener('submit',function(e) {
     showSuccess(conditions);
   } else {
     showError(conditions, "Vous devez vérifier que vous acceptez les termes et conditions.");
-    isFormOk = false;
+    // console.log(conditions);
   }
 
   // Traitement du Formulaire
-  // if(document.getElementById("form").checkValidity()) {
-  //   console.log('test');
-  // }
-
-  if (isFormOk) {
-    console.log('Ca marche !');
-    form.style.display = 'none';
-    formValidMessage.style.display = 'block';
-    e.preventDefault();
-  }else {
-    e.preventDefault();
-  }
+  console.log('message envoyé');
 
 });
+
 
 // DOM ELEMENTS SUBMITTED CONFIRMATION
 // const modalSubmit = document.getElementsByClassName('container-confirmation-submit');
