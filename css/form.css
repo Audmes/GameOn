@@ -1,8 +1,10 @@
 /**
  * Form
  */
- .modal-overlay {
+.modal-overlay {
     display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -14,28 +16,19 @@
 }
 
 .modal-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     margin: 0 auto;
-    margin-top: 50vh;
-    transform: translateY(-50%);
-
     width: 100%;
     max-width: 536px;
     /* height: 850.609px; */
-    max-height: 95vh;
-    
+    height: 90vh;
+    max-height: 850.609px;
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
     background: #232323;
-
     border-radius: 8px;
     overflow: hidden;
     position: relative;
     color: #fff;
-
     flex-shrink: 0;
     box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
 }
@@ -44,22 +37,20 @@
     /* padding: 15px 8%; */
     /* margin: 15px auto; */
     padding: 49.2px 38.84px 17.19px 38.84px;
-    /* height: 100%; */
-    /* background-color: #3876ac; */
+    /* height: 850.609px; */
+    height: 100%;
+    width: 100%;
 }
 
-.button {
-    background: #fe142f;
-    margin-top: 0.5em;
-    padding: 1em;
-    color: #fff;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 16px;
+.modal-body form {
+    display: grid;
+    /* display: none; */
+    /* gap: 10px; */
+    height: 100%;
 }
-  
-.button:hover {
-    background: #3876ac;
+
+.formData {
+    height: 97.101px;
 }
   
 .smFont {
@@ -235,14 +226,27 @@ input[data-error]::after {
     transform: rotate(-45deg);
 }
 
-.btn-submit {
+/**/
+
+/**
+ * Buttons
+ */  
+.btn-submit:hover, .btn-close:hover {
+    background: #3876ac;
+}
+
+.btn-submit, .btn-close {
     width: 182.551px;
     height: 40.135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
     flex-shrink: 0;
     background: #fe142f;
-    display: block;
-    margin: 0 auto;
-    margin-top: 19.35px;
+    
+    /* margin-top: 19.35px; */
     cursor: pointer;
     border: 0;
     border-radius: 8px;
@@ -329,6 +333,37 @@ input[data-error]::after {
     font-size: 16px;
 } */
 
+/**
+ * Valid Message
+ */
 .formValidMessage {
     display: none;
+    height: 100%;
+    min-height: 250px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.formValidMessage__txt {
+    height: 80%;
+    width: 275px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    text-align: center;
+    font-family: DM Sans;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 142.6%; /* 51.336px */
+}
+
+.formValidMessage__button {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: end;
 }

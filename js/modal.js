@@ -2,6 +2,7 @@
 const modalbg = document.querySelector(".modal-overlay");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
+const closeValidMessageBtn = document.querySelector(".btn-close");
 const formData = document.querySelectorAll(".formData");
 
 // DOM Elements : Vérification de formulaire
@@ -31,7 +32,7 @@ function editNav() {
  */
 // launch modal event
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "flex";
 }
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -40,6 +41,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 closeBtn.addEventListener("click", closeModal);
+closeValidMessageBtn.addEventListener("click", closeModal);
 
 /**
  * Vérification de formulaire
@@ -168,7 +170,7 @@ form.addEventListener('submit',function(e) {
   if (isFormOk) {
     console.log('Ca marche !');
     form.style.display = 'none';
-    formValidMessage.style.display = 'block';
+    formValidMessage.style.display = 'flex';
     e.preventDefault();
   }else {
     e.preventDefault();
