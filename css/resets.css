@@ -12,3 +12,8 @@
     margin: 0;
     padding: 0;
 }
+
+html {
+    /* font-size:100%; */
+    font-size: 62.5%; /* si 62.5% alors 1 rem = 10 px */
+}
