@@ -2,6 +2,8 @@
  * Form
  */
 .modal-overlay {
+    height: 100vh;
+    width: 100%;
     display: none;
     justify-content: center;
     align-items: center;
@@ -9,8 +11,6 @@
     z-index: 1;
     left: 0;
     top: 0;
-    min-height: 100vh;
-    width: 100%;
     overflow: auto;
     background-color: rgba(26, 39, 156, 0.4);
 }
@@ -21,14 +21,14 @@
     max-width: 536px;
     min-width: 414px;
     /* height: 850.609px; */
-    height: 90vh;
+    height: 100%;
     max-height: 850.609px;
     min-height: 657px;
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
     background: #232323;
     border-radius: 8px;
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     color: #fff;
     flex-shrink: 0;
@@ -44,30 +44,33 @@
 .modal-body form {
     display: grid;
     /* display: none; */
-    /* gap: 10px; */
+    gap: 10px;
     height: 100%;
 }
 
 .formData {
+    height: 100%;
+    min-height: 7.5rem;
     max-height: 97.101px;
 }
   
 .smFont {
-    font-size: 16px;
+    font-size: 1.6rem;
 }
   
 label, .text-label {
     color: #FFF;
     text-align: justify;
     font-family: var(--font-default);
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 400;
     line-height: 100%; /* 14px */
 }
 
 .text-label {
-    margin-top: 11.39px;
+    /* padding: 8px; */
+    padding-top: 11.39px;
 }
 
 input {
@@ -86,19 +89,19 @@ input {
     padding: 8px;
     width: 100%;
     border-radius: 8px;
-    font-size: 20px;
+    font-size: 2rem;
     height: 48px;
 }
   
 .formData[data-error]::after {
     content: attr(data-error);
-    font-size: 0.4em;
+    font-size: 1rem;
     color: #e54858;
     display: block;
     margin-top: 7px;
     margin-bottom: 7px;
     text-align: left;
-    line-height: 0.3;
+    line-height: 142.6%; /* 14.26px */
     opacity: 0;
     transition: 0.3s;
 }
@@ -113,7 +116,7 @@ input {
   
 input[data-error]::after {
       content: attr(data-error);
-      font-size: 0.4em;
+      font-size: 0.64rem; /* 6.4px */
       color: red;
 }
 
@@ -121,7 +124,7 @@ input[data-error]::after {
 .checkbox2-label {
     position: relative;
     margin-left: 36px;
-    font-size: 12px;
+    font-size: 1.2rem;
     font-weight: normal;
 }
 
@@ -245,7 +248,7 @@ input[data-error]::after {
     color: #FFF;
     text-align: center;
     font-family: DM Sans;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -346,7 +349,7 @@ input[data-error]::after {
     color: #FFF;
     text-align: center;
     font-family: DM Sans;
-    font-size: 36px;
+    font-size: 3.6rem;
     font-style: normal;
     font-weight: 400;
     line-height: 142.6%; /* 51.336px */
