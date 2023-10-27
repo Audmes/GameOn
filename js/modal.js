@@ -1,8 +1,8 @@
 // DOM Elements
-const modalbg = document.querySelector(".modal-overlay");
+const body = document.querySelector('body');
+const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
-const closeValidMessageBtn = document.querySelector(".btn-close");
 const formData = document.querySelectorAll(".formData");
 
 // DOM Elements : Vérification de formulaire
@@ -11,7 +11,7 @@ const first = document.getElementById('first');
 const last = document.getElementById('last');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
-const conditions = document.getElementById('checkbox1');
+const terms = document.getElementById('checkbox1');
 
 const formValidMessage = document.querySelector('.formValidMessage');
 
@@ -19,29 +19,31 @@ const formValidMessage = document.querySelector('.formValidMessage');
  * Fonction pour ouvrir et fermer le menu mobile
  */
 function editNav() {
-  let btn = document.getElementById("myTopnav");
-  if (btn.className === "topnav") {
-    btn.className += " responsive";
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
   } else {
-    btn.className = "topnav";
+    x.className = "topnav";
   }
 }
 
 /**
  * Fonction pour ouvrir et fermer la modale
  */
-// launch modal event
+
+// launch modal form
 function launchModal() {
-  modalbg.style.display = "flex";
+  modalbg.style.display = "block";
+  body.style.overflow = 'hidden';
 }
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close modal event
 function closeModal() {
   modalbg.style.display = "none";
+  body.style.overflow = 'auto';
 }
 closeBtn.addEventListener("click", closeModal);
-closeValidMessageBtn.addEventListener("click", closeModal);
 
 /**
  * Vérification de formulaire
@@ -93,7 +95,6 @@ function validateBirthdate(birthdate) {
     return true;
   }
 }
-
 
 // Formulaire : Validation
 form.addEventListener('submit',function(e) {
@@ -154,11 +155,11 @@ form.addEventListener('submit',function(e) {
     showSuccess(quantity);
   }
 
-  // Function validation : Conditions
-  if (conditions.checked) {
-    showSuccess(conditions);
+  // Function validation : Terms
+  if (terms.checked) {
+    showSuccess(terms);
   } else {
-    showError(conditions, "Vous devez vérifier que vous acceptez les termes et conditions.");
+    showError(terms, "Vous devez vérifier que vous acceptez les termes et conditions.");
     isFormOk = false;
   }
 
@@ -177,29 +178,3 @@ form.addEventListener('submit',function(e) {
   }
 
 });
-
-// DOM ELEMENTS SUBMITTED CONFIRMATION
-// const modalSubmit = document.getElementsByClassName('container-confirmation-submit');
-// const closeModalSubmit = document.getElementsByClassName('close-modal-submit');
-// const closeBtnConfirmation = document.getElementById('close-btn-confirmation');
-
-// ------ SUBMITTED CONFIRMATION ------ //
-// DISPLAY MODAL SUBMIT
-// function displayModalSubmit() {
-//     modalbg.style.display = 'none';
-//     modalSubmit[0].style.display = 'block';
-// }
-
-// CLOSE SUBMIT
-// function closeSubmit() {
-//     modalSubmit[0].style.display = 'none';
-//     first.style.border = 'none';
-//     last.style.border = 'none';
-//     email.style.border = 'none';
-//     birthdate.style.border = 'none';
-//     quantity.style.border = 'none';
-// }
-
-// EVENT CLOSE MODAL SUBMIT
-// closeModalSubmit[0].addEventListener('click', closeSubmit);
-// closeBtnConfirmation.addEventListener('click', closeSubmit);
