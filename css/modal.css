@@ -80,6 +80,8 @@ img {
 
 .header-logo {
     float: left;
+    height: auto;
+    width: auto;
 }
 
 .main-navbar {
