@@ -5,6 +5,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
 const closeBtn2 = document.querySelector(".close2");
 const formData = document.querySelectorAll(".formData");
+const navBtn = document.querySelector(".icon");
 
 // DOM Elements : Vérification de formulaire
 const form = document.getElementById('form');
@@ -27,6 +28,7 @@ function editNav() {
     x.className = "topnav";
   }
 }
+navBtn.addEventListener("click", editNav);
 
 /**
  * Fonction pour ouvrir et fermer la modale
