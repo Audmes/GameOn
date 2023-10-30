@@ -204,6 +204,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -404,15 +405,25 @@ input[data-error]::after {
   padding: 0;
 }
 
+/* Form Valid Message */
+.formValidMessage {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Hero Section */
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh; */
+  max-height: 657px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  max-height: 657px;
 }
 .hero-content {
   padding: 51px 67px;
@@ -511,6 +522,8 @@ input[data-error]::after {
   }
 
   .hero-section {
+    min-height: 93vh;
+    max-height: 100%;
     display: block;
     box-shadow: unset;
   }

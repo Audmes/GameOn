@@ -3,6 +3,7 @@ const body = document.querySelector('body');
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector(".close");
+const closeBtn2 = document.querySelector(".close2");
 const formData = document.querySelectorAll(".formData");
 
 // DOM Elements : Vérification de formulaire
@@ -43,7 +44,9 @@ function closeModal() {
   modalbg.style.display = "none";
   body.style.overflow = 'auto';
 }
+
 closeBtn.addEventListener("click", closeModal);
+closeBtn2.addEventListener("click", closeModal);
 
 /**
  * Vérification de formulaire
@@ -89,14 +92,14 @@ function validateBirthdate(birthdate) {
   const parts = birthdate.split('/');
   const birthYear = parseInt(parts[0], 10);
 
-  if (currentYear - birthYear < 16) {
+  if (currentYear - birthYear < 16) { // Change here the minimum age required
     return false;
   } else {
     return true;
   }
 }
 
-// Formulaire : Validation
+// Formulaire : Check Validation Form
 form.addEventListener('submit',function(e) {
   let isFormOk = true;
 
@@ -168,13 +171,12 @@ form.addEventListener('submit',function(e) {
   //   console.log('test');
   // }
 
+  // Function Results Check validation Form
   if (isFormOk) {
-    console.log('Ca marche !');
     form.style.display = 'none';
     formValidMessage.style.display = 'flex';
     e.preventDefault();
   }else {
     e.preventDefault();
   }
-
 });
