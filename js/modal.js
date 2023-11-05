@@ -1,9 +1,10 @@
+"use strict"; // Pour les erreurs
+
 // DOM Elements
 const body = document.querySelector('body');
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const closeBtn = document.querySelector(".close");
-const closeBtn2 = document.querySelector(".close2");
+const closeBtn = document.querySelectorAll(".closeBtn");
 const formData = document.querySelectorAll(".formData");
 const navBtn = document.querySelector(".icon");
 
@@ -13,6 +14,7 @@ const first = document.getElementById('first');
 const last = document.getElementById('last');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
+const locations = document.querySelectorAll('input[type=radio][name=location]');
 const terms = document.getElementById('checkbox1');
 
 const formValidMessage = document.querySelector('.formValidMessage');
@@ -39,6 +41,7 @@ function launchModal() {
   modalbg.style.display = "block";
   body.style.overflow = 'hidden';
 }
+// modalBtn.addEventListener("click", launchModal);
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // Close modal event
@@ -46,9 +49,7 @@ function closeModal() {
   modalbg.style.display = "none";
   body.style.overflow = 'auto';
 }
-
-closeBtn.addEventListener("click", closeModal);
-closeBtn2.addEventListener("click", closeModal);
+closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
 /**
  * Vérification de formulaire
@@ -69,26 +70,26 @@ function showSuccess(input) {
   return true;
 }
 
-// Function validation : Firstname
+// Validation : Firstname
 function validateFirst(first) {
-    let firstRegex = /^[A-Za-z][A-Za-z\é\è\ê\-]+$/;
+    let firstRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
 //	let prenomRGEX = /^[A-Z][A-Za-z\é\è\ê\-]+$/; Avec une majuscule obligatoire en première lettre
-    return firstRegex.test(first);
+    return firstRegex.test(first.trim());
 }
 
-// Function validation : Lastname
+// Validation : Lastname
 function validateName(last) {  
-    let lastRegex = /^[A-Za-z][A-Za-z\é\è\ê\-]+$/;
-    return lastRegex.test(last);
+    let lastRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
+    return lastRegex.test(last.trim());
 }
 
-// Function validation : E-mail
+// Validation : E-mail
 function validateEmail(email) {
     let emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return emailRegex.test(String(email).toLowerCase());
 }
 
-// Function validation : Birthdate
+// Validation : Birthdate
 function validateBirthdate(birthdate) {
   const currentYear = new Date().getFullYear(); 
   const parts = birthdate.split('/');
@@ -101,11 +102,18 @@ function validateBirthdate(birthdate) {
   }
 }
 
-// Formulaire : Check Validation Form
+// Validation : Quantity
+function validateQuantity(quantity) {
+  let quantityRegex = /^[0-9]+$/;
+  return quantityRegex.test(quantity.trim());
+}
+
+
+// Formulaire : Check Form
 form.addEventListener('submit',function(e) {
   let isFormOk = true;
 
-  // Firstname
+  // Check : Firstname
   if(first.value === '') {
     showError(first,'Votre Prénom est requis.');
     isFormOk = false;
@@ -116,7 +124,7 @@ form.addEventListener('submit',function(e) {
     showSuccess(first);
   }
 
-  // Lastname
+  // Check : Lastname
   if(last.value === '') {
     showError(last, 'Votre Nom est requis.');
     isFormOk = false;
@@ -127,7 +135,7 @@ form.addEventListener('submit',function(e) {
     showSuccess(last);
   }
 
-  // E-mail
+  // Check : E-mail
   if(email.value === ''){
     showError(email, 'Votre E-mail est requis.');
     isFormOk = false;
@@ -138,7 +146,7 @@ form.addEventListener('submit',function(e) {
     showSuccess(email);
   }
 
-  // Birthdate
+  // Check : Birthdate
   if(birthdate.value === '') {
     showError(birthdate, "Vous devez entrer votre date de naissance.");
     isFormOk = false;
@@ -149,18 +157,29 @@ form.addEventListener('submit',function(e) {
     showSuccess(birthdate);
   }
 
-  // Function validation : Quantity
-  if (quantity.value === '') {
+  // Check : Quantity
+  if (quantity.value === '' || !validateQuantity(quantity.value)) {
     showError(quantity, "Un nombre est requis.");
     isFormOk = false;
-  } else if (quantity.value > 99) {
-    showError(quantity, "Le nombre ne peut pas être supérieur à 99.");
-    isFormOk = false;
+  } else if(quantity.value > 99) {
+      showError(quantity, "Le nombre ne peut pas être supérieur à 99.");
+      isFormOk = false;
   } else {
     showSuccess(quantity);
   }
 
-  // Function validation : Terms
+  // Check : Location
+  for (let i = 0; i < locations.length; i++) {
+    if ( locations[i].checked === true ) {
+      showSuccess(locations[i]);
+      break;
+    }else {
+      showError(locations[i] , 'test');
+      isFormOk = false;
+    }
+  }
+
+  // Check : Terms
   if (terms.checked) {
     showSuccess(terms);
   } else {
@@ -169,11 +188,7 @@ form.addEventListener('submit',function(e) {
   }
 
   // Traitement du Formulaire
-  // if(document.getElementById("form").checkValidity()) {
-  //   console.log('test');
-  // }
-
-  // Function Results Check validation Form
+  // Check : Results validation Form
   if (isFormOk) {
     form.style.display = 'none';
     formValidMessage.style.display = 'flex';
