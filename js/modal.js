@@ -6,7 +6,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelectorAll(".closeBtn");
 const formData = document.querySelectorAll(".formData");
-const navBtn = document.querySelector(".icon");
+// const navBtn = document.querySelector(".icon");
+const navBtn = document.querySelector(".dropbtn");
 
 // DOM Elements : Vérification de formulaire
 const form = document.getElementById('form');
@@ -22,15 +23,23 @@ const formValidMessage = document.querySelector('.formValidMessage');
 /**
  * Fonction pour ouvrir et fermer le menu mobile
  */
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+// function editNav() {
+//   let x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
+// navBtn.addEventListener("click", editNav);
+
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function navDropdown() {
+  document.getElementById("myDropdown").classList.toggle("show");
 }
-navBtn.addEventListener("click", editNav);
+navBtn.addEventListener("click", navDropdown);
+
 
 /**
  * Fonction pour ouvrir et fermer la modale

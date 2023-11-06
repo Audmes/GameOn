@@ -78,9 +78,9 @@ img {
   width: 100%;
   margin: 3.5% 0;
   padding-left: 3.5%;
-  display: flex;
+  /* display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; */
   overflow: hidden;
 }
 
@@ -122,7 +122,7 @@ img {
   border-radius: 15px;
 }
 
-.topnav .icon {
+.dropbtn {
   display: none;
 }
 
@@ -503,32 +503,66 @@ input {
 
 /* Media Queries */
 @media screen and (max-width: 63.999rem) { /* 1023 px*/
-  .topnav {
-    padding-right: 3.5%;
-  }
-  .topnav a { display: none; }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-
-  .topnav.responsive { position: relative; }
-  
-  .topnav.responsive .icon {
-    position: absolute;
+  .main-navbar {
+    width: 100%;
     right: 0;
-    top: 0;
+    padding-right: 3.5%;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    /* position: absolute; */
+    /* display: inline-block; */
+    z-index: 2;
+  }
+  .topnav {
+    margin: 3.5% 0;
+    padding-left: 0;
   }
 
-  .topnav.responsive a {
+  .dropbtn {
+    display: block;
+    position: absolute;
+    top: 0;
+    margin-top: 3.5vw;
+    padding: 1.6vw;
+    font-size: 1.2rem;
+    z-index: 4;
+    /* background: transparent; */
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
+  }
+
+  nav {
+    display: none;
+    /* position: absolute; */
+    /* margin-top: 50px; */
+    max-width: 250px;
+    min-width: 160px;
+    /* overflow: auto; */
+    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+    z-index: 3;
+  }
+
+  .topnav a {
     float: none;
     display: block;
     text-align: left;
+    font-size: 1rem;
+    /* max-width: 230px; */
   }
+  
+  /* .dropbtn:hover, .dropbtn:focus {
+    background-color: red;
+    color: white;
+  } */
+  
+  .show {display: block;}
 
   .header-logo {
     width: 50%;
     float: left;
+    padding-left: 3.5%;
   }
 
   .hero-section {
@@ -582,17 +616,6 @@ input {
     width: 100%;
     font-size: 1.5rem;
     margin-top: 25px;
-  }
-  .topnav.responsive { position: relative; }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
   }
 }
 
