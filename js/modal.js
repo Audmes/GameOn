@@ -70,18 +70,24 @@ function showSuccess(input) {
   return true;
 }
 
-// Validation : Firstname
-function validateFirst(first) {
-    let firstRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
-//	let prenomRGEX = /^[A-Z][A-Za-z\é\è\ê\-]+$/; Avec une majuscule obligatoire en première lettre
-    return firstRegex.test(first.trim());
+// Validation : Name
+function validateName(name) {  
+  let nameRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
+  return nameRegex.test(name.trim());
 }
 
+// Validation : Firstname
+// function validateFirst(first) {
+//     let firstRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
+// //	let prenomRGEX = /^[A-Z][A-Za-z\é\è\ê\-]+$/; Avec une majuscule obligatoire en première lettre
+//     return firstRegex.test(first.trim());
+// }
+
 // Validation : Lastname
-function validateName(last) {  
-    let lastRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
-    return lastRegex.test(last.trim());
-}
+// function validateName(last) {  
+//     let lastRegex = /^[A-Za-z][A-Za-z\é\è\ê\-\s]+$/;
+//     return lastRegex.test(last.trim());
+// }
 
 // Validation : E-mail
 function validateEmail(email) {
@@ -95,7 +101,7 @@ function validateBirthdate(birthdate) {
   const parts = birthdate.split('/');
   const birthYear = parseInt(parts[0], 10);
 
-  if (currentYear - birthYear < 16) { // Change here the minimum age required
+  if (currentYear - birthYear < 16 || currentYear - birthYear > 125 ) { // Change here the minimum age required
     return false;
   } else {
     return true;
@@ -117,7 +123,7 @@ form.addEventListener('submit',function(e) {
   if(first.value === '') {
     showError(first,'Votre Prénom est requis.');
     isFormOk = false;
-  }else if (!validateFirst(first.value)) {
+  }else if (!validateName(first.value)) {
     showError(first, "Votre Prénom n'est pas valide.");
     isFormOk = false;
   }else {
@@ -174,7 +180,7 @@ form.addEventListener('submit',function(e) {
       showSuccess(locations[i]);
       break;
     }else {
-      showError(locations[i] , 'test');
+      showError(locations[i] , 'Vous devez choisir une option.');
       isFormOk = false;
     }
   }
@@ -192,7 +198,7 @@ form.addEventListener('submit',function(e) {
   if (isFormOk) {
     form.style.display = 'none';
     formValidMessage.style.display = 'flex';
-    e.preventDefault();
+    // e.preventDefault();
   }else {
     e.preventDefault();
   }
