@@ -33,7 +33,7 @@ body {
   /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1440px;
+  max-width: 1350px;
   min-width: 320px;
   margin: 0 auto;
 }
@@ -44,6 +44,7 @@ header {
 
 main {
   width: 100%;
+  /* margin: 1px 20px 15px; */
   font-size: 130%;
   font-weight: bolder;
   color: black;
