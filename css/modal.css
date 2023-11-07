@@ -428,6 +428,8 @@ input {
 
 .formValidMessage-text {
   text-align: center;
+  font-size: 36px;
+  font-weight: normal;
   margin-top: 350px;
 }
 
