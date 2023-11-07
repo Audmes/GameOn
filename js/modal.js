@@ -207,7 +207,7 @@ form.addEventListener('submit',function(e) {
   if (isFormOk) {
     form.style.display = 'none';
     formValidMessage.style.display = 'flex';
-    // e.preventDefault();
+    e.preventDefault();
   }else {
     e.preventDefault();
   }
